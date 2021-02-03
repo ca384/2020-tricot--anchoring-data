@@ -1,1 +1,1 @@
-# 2020-tricot--anchoring-data
+# 2020-tricot-anchoring-data
