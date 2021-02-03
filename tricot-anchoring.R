@@ -1,0 +1,1 @@
+tricot1<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/tricot data 2020/tricot-1map-3map.csv")
