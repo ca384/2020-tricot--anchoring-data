@@ -1,0 +1,130 @@
+﻿S/NO,FARMER NAME,SEX,MARITAL STATUS,EDUCATIONAL QUALIFICATION,COMMUNITY NAME,LGA,SENATORIAL ZONE,STATE,     GSM NO,Coordinate,Variety A,Variety B,VARIETY C,1map Best Overall impression,1map Worst off Overall impression,1map sprouting Best,1map sprouting Worst off,1map plant growth Best,1map plant growth Worst off,1map canopy Best,1map canopy  Worst off,1map soil suitability Best,1map soil suitability Worst off,1map Remarks,3map overall Best,3map overall Worst off,3map sprouting Best,3map sprouting Worst off,3map plant growth Best,3map plant growth Worst off,3map canopy Best,3map canopy Worst off,3map branching Best,3map branching Worst off,3map disease Best,3map disease Worst off,3map Remarks,6map overall impression Best,6map overall impression Worst off,6map sprouting Best,6map sprouting Worst off,6map plant growth Best,6map plant growth Worst off,6map canopy Best,6map canopy Worst off,6map Branching Best,6map Branching Worst off,6map Disease Best,6map Disease Worst off,6map Remarks,9map Best Overall impression,9map Overall impression Worst off,9mapPlant growth Best,9map Plant growth Worst off,9map canopy formation  Best,9map canopy formation  Worst off,9map Branching habit Best,9map Branching habit Worst off,9map suitability to soil Best,9map suitability to soil Worst off,9Remark
+1,Diala Franca(Leader),F,Single,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,7060421398,5'3739.536N  7'1817.724E,TMS14F1301P0004,"TMS13F2110P0008
+","IITA-TMS-IBA30572
+",C,A,C,A,C,A,C,A,C,A,,C,B,C,B,C,B,C,B,C,B,NIL,NIL,,B,C,C,B,B,C,A,B,A,B,C,B,B is the best because it has good canopy and broad biomass. C is the worst because the stem is not attractive and it has low growth rate compared to others,A,C,A,C,A,C,A,B,A,C,A is the best because plant growth is okay. C is worst because it has disease more than B
+2,Nnenna Ewelike,F,Single,JS3,Umualumaku,Ehime Mbano,Okiigwe,Imo,8134225178,5'3729.39N  7'1833.97E,TMS14F1223P0007,"TMS14F1310P0015
+","TMS13F1160P0004
+",A,B,A,B,A,B,A,B,A,B,,A,B,A,B,A,B,A,B,A,B,A,B,,A,B,A,B,C,B,C,A,A,B,C,B,"A is the best. A survived very well compared to B. B has low survival rate, disease infestation is high",A,B,C,B,A,B,A,B,A,B,A has canopy and branches. B is worst because plant growth is poor
+3,Ezinna Osuagwu Cosmos,M,Married,NCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,8082435841,5'3738.376N  7'180.084E,TMS13F1307P0016,"TMS13F1343P0022
+","TMS14F1195P0005
+",B,C,B,C,B,C,B,C,B,C,,A,C,A,C,A,C,A,C,A,C,NIL,NIL,,A,B,A,C,A,B,A,B,C,A,C,B,A is the best because it has architectural form while B is the worst because it has low architectural form and disease infestation,A,C,A,C,A,B,C,A,A,C,"A is the best. It looks attractive. A and B has termite attacks more than others while C is the worst, the stem is not attractive like A and B"
+4,Chief  I.A. Osuagwu,M,Married,B.Sc,Umualumaku,Ehime Mbano,Okiigwe,Imo,8100913427,5'3743.96N  7'1812.432E,TMS-IBA961632,"TMS13F1343P0002
+","TMEB419
+",A,C,A,C,A,C,A,C,A,C,,A,C,A,C,A,C,A,C,A,C,NIL,NIL,,A,C,A,C,C,B,B,C,B,C,C,B,A is the best because it has nice stems and it suvived more than others. B and C has low survival rate and it was totally destroyed by termites,A,C,C,B,A,B,B,A,A,C,A is the best because all A survived. C is the worst because not all of them survived. B has little branches
+5,Nwokorie Martina ,F,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,7066645763,5'3742.8N  7'1830.882E,TMEB693,"TMS13F1153P0001
+","TMS14F1310P0004
+",A,C,A,C,A,C,B,C,A,C,,B,C,B,C,B,C,B,C,B,C,NIL,NIL,,A,C,A,C,A,C,A,C,A,C,A,C,A survived all and has good canopy also disease free. C is not sound and slow in growth,A,C,A,C,A,C,B,C,A,C,A has good stem than others and the stem is also big. C does not have nice stem and the stem is attacked with termites
+6,Chioma Okoro,F,Single,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,7037142240,5'942.1N  7'167.82E,IITA-TMS-IBA980581,"K195
+","TMS13F1053P0010
+",C,B,C,B,C,B,C,B,C,B,,A,B,A,B,A,B,A,B,A,B,NIL,NIL,,A,C,A,C,A,C,A,C,B,A,B,C,"A is the best because all germinated and survived, while C is the worst because termite destroyed the plant even after replacement I continued to die",A,C,A,C,A,C,B,C,A,C,"A is best. It has big stem and is tall, while C has stunted growth and it has disease."
+7,Chidi Mmeje,M,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,8039532783,5'374.674N  7'1823.014E,TMEB7,"TMS14F1301P0013
+","TMS14F1291P0012
+",C,A,C,A,C,A,C,A,C,A,,B,C,B,C,B,C,B,C,B,C,NIL,NIL,,B,C,B,A,A,C,A,C,C,A,A,B,B is the best because all B survived and germinated. While in C not all survived and the ones that survived in C did not do well. B and A has diseases on their stem,B,A,A,C,B,A,B,A,A,C,B is the best because the stem is okay and it has branches. C growth is poor and it has disease and tiny stem
+8,Chinyere Mmeje(Leader),F,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,8065094664,5'3740.674N  7'1823.064E,TMEB7,"TMS14F1306P0015
+","TMS13F1343P0044
+",C,A,C,A,C,A,C,A,C,A,,C,B,C,B,A,C,C,A,NIL,NIL,NIL,NIL,,A,B,A,B,A,C,C,A,A,C,B,A,A is the best because it has stunted growth at early stage but now it is doing well. While B is the worst because of disease infestation on the stems and growth rate is not in line with others,A,C,A,C,,A,A,C,A,C,A is best because it has good and nice stem while C has disease manifestation. B stem is okay but has little disease.
+9,Nwoke Joy,F,Married,FSLC,Umualumaku,Ehime Mbano,Okiigwe,Imo,8061554920,5'3737.72N  7'1810.67E,TMS13F1153P0001,"TMS14F1291P0012
+","TMS14F1291P0003
+",C,B,C,B,C,B,A,C,C,B,,C,A,B,A,A,C,B,A,NIL,NIL,NIL,NIL,,B,A,B,A,B,C,B,C,A,C,B,A,B is the best because all survived from day one till now. While A is the worst because some died early even after replacement,B,C,B,C,C,B,A,C,B,C,B is the best because the stem is tall and strong. C is worst because the stem is tiny and scanty.
+10,Agugoesi Benadine,F,Married,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,8177649724,5'3739.73N  7'1814.322E,"TMS13F1343P0044
+","TMS14F1035P0004
+","TMS13F1307P0016
+",C,A,C,A,C,A,A,B,C,A,,C,B,C,B,A,C,B,A,B,C,C,A,,C,B,C,B,C,B,A,C,B,A,C,B,C is complete in survival while B is the worst because it has disease and some died at early stage,C,A,C,A,C,A,B,A,C,A,"C is a little bit okay than others but there is presence of CMD (cassava mosaic disease) both in A,B and C"
+11,Osuagwu  Ewenkechinyere,F,Married ,B Sc,Umualumaku,Ehime Mbano,Okiigwe,Imo,7035369560,5'3742.51N  7'1830.882E,"IITA-TMS-IBA000070
+","IITA-TMS-IBA980581
+","TMS14F1301P0013
+",B,C,B,C,B,C,A,C,B,C,,A,C,A,C,A,C,C,A,A,C,A,C,,A,C,A,C,A,C,A,C,A,C,A,B,"A is the best because the stems are very nice and all survived. While C is the worst because white ant (termite) destroyed it, early even after replacement it continued to die",A,C,A,C,A,C,A,C,A,C,A is the best because it has  nice stem and it has no disease. B and C has disease but C has termite manifestation
+12,Diala Emmanuel,M,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,8063808739,5.3739.14N  7'1817.808E,"TMS13F1088P0007
+","TMS13F1343P0044
+","TMS13F1343P0022
+",C,A,C,A,C,A,A,B,C,A,,C,A,C,A,C,A,A,B,C,A,C,A,,C,A,C,A,C,A,A,B,C,A,C,A,"C is the best because all survived and have branches, while  A is the worst because it has disease and stunted growth",C,A,C,A,A,B,C,B,C,A,"C is the best because all the stems are complete, but A and B are attacked with disease"
+13,Ohakwe chika,F,Married,FSLC,Umualumaku,Ehime Mbano,Okiigwe,Imo,9063065440,5'3731.212N  7'189.066E,"TMS13F1053P0010
+","TMEB2
+","TMS-IBA961632
+",C,A,C,A,C,A,C,A,C,A,,C,B,C,B,C,B,A,B,A,C,C,B,,C,B,C,B,C,B,B,C,A,B,A,B,C is the best because it survived more than others while B is the worst because it started having problem from day one till now,C,B,C,B,B,A,A,B,C,B,C is the best stem that suites the land than others. B has termite manifestation and only few stems survived.
+14,Rose Anyanwu (Uche),F,Married,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,8010455342,5'3744.45N  7'1944.26E,"TMS13F2110P0008
+","TMS13F1343P0002
+","TMEB7
+",A,B,A,B,A,B,A,C,A,B,,A,B,A,B,C,B,A,B,A,B,A,B,,A,C,C,B,A,B,A,B,B,A,A,B,A is the best because all germinated and showing sign of happineess to the farmer. While B is worst because of the nature,A,B,C,B,A,C,A,B,C,B,"A and C gives joy despite the weather, they are still good."
+15,Agnes Chukwu ,F,Married ,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,7035634957,5'3744.45N  7'1944.26E,K195,"TMS14F1291P0003
+","TMEB2
+",A,C,A,C,A,C,A,B,A,C,,A,C,B,C,A,C,A,C,A,C,B,C,,A,C,A,C,A,C,A,C,A,C,A,C,A is the best while C is the worst,A,C,A,C,A,C,A,C,A,C,A is the best than other varieties
+16,Louisa Ubochi,F,Married ,SSCE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,9064591844,5'3744.45N  7'1944.26E,TMEB419,TMS13F1160P0004,"IITA-TMS-IBA000070
+",C,B,C,B,C,B,A,C,C,B,,A,B,A,B,C,B,C,B,C,B,A,B,,C,B,C,B,C,B,A,B,C,B,A,B,C is the best because all survived and germinated while B is the worst because only few survived and those that survived were begging to germinate,C,B,A,B,A,B,C,B,A,B,A is good
+17,Obasi Nkeiruka,F,Married,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,8143452217,5'3725.974N  7'1938.658E,TMS14F1287P0008,TMS14F1310P0004,TMEB693,C,A,C,A,C,A,B,A,C,A,,C,A,C,A,C,A,B,A,B,A,C,A,,C,A,C,A,C,B,B,C,B,C,B,A,"C is the best, while A is the worst as a result of total destruction over the land",C,A,C,A,B,A,B,A,C,A,C is the best although the crops were attacked by outsiders
+18,Obasi Etheibert (Leader),M,Widower,HND,Umuezegwu,Ihite Uboma,Okiigwe,Imo,8131329351,5'3744.45N  7'1944.26E,TMS14F1310P0015,TMS14F1223P0007,"TMS14F1306P0015
+",B,C,B,C,A,C,A,C,B,C,,A,C,B,C,A,C,A,C,B,C,A,C,,A,C,B,C,A,C,B,C,A,C,C,B,A is the best because from the sprouting it proves itself. All survived and germinated while C is the worst only few survived,A,C,A,C,A,C,B,C,A,C,A is better because of its nature. Although the weather is hot it still stands.
+19,Miriam Ajaoguh,F,Married,WACE,Umukara,Ihite Uboma,Okiigwe,Imo,9039485164,5.3921.84N  7'2153.532E,TMS14F1035P0004,TMS13F1049P0001,"TMS13F1088P0007
+",C,B,C,B,A,B,A,B,C,B,,C,A,C,A,C,A,B,A,A,B,C,A,,C,B,C,B,A,B,C,B,C,B,C,B,C is my best because of the survival rate and its architectural shape. B started dieing after germination. Its growth is slow,B,A,B,A,C,A,C,A,B,A,B is a little better than others. Generally I'm not impressed on the farm
+20,Azuama Joy,F,Widow,WACE,Umukara,Ihite Uboma,Okiigwe,Imo,8105093621,5'3918.084N  7'2146.416E,TMS14F1310P0015,TMS14F1287P0008,IITA-TMS-IBA30572,B,A,B,A,B,A,C,A,B,A,,A,B,C,A,B,A,A,B,A,B,C,A,,B,A,B,A,B,A,B,A,B,C,B,A,"B is the best because all survived and germinated, while A is the worst",C,B,C,B,A,C,A,B,B,C,C is completing survival than A and B. B has small/tiny stem
+21,Theresa Ajaogu,F,Widow,SSCE,Umukara,Ihite Uboma,Okiigwe,Imo,9045628876,5'3921.84N  7'2153.532E,TMS13F1049P0001,TMS14F1301P0004,TMS14F1195P0005,C,A,C,A,C,A,B,A,C,A,,C,A,C,A,C,A,C,A,C,A,C,A,,A,C,A,C,A,C,A,C,A,C,A,C,A is the best because all survived and also germinated and was doing well while C is the worst,B,C,B,C,C,B,A,B,B,C,B is a little okay than others. The hot weather shows on them. C has little branches.
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

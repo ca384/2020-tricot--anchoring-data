@@ -1,0 +1,83 @@
+﻿S/NO,SEX,MARITAL STATUS,EDUCATIONAL QUALIFICATION,COMMUNITY NAME,LGA,SENATORIAL ZONE,STATE,Coordinate,Variety A,Variety B,VARIETY C,1month Overall impression Best,1month Overall impression Worst off,1 month Germination/Sprouting Best,1 month Germination/Sprouting Worst off,1 month plant growth Best,1 Month Plant growth Worst off,1 month Weed competitiveness/canopy formation Best,1 month Weed competitiveness/canopy formation Worst off,1 month Suitability to soil and environmentBest,1 month Suitability to soil and environmentWorst off,3Months overall impression Best,3Months overall impression Worst off,3months Survival/sprouting Best,3 months Survival/sprouting Worst off,3 months Plant growth Best,3 months Plant growth Worst off,3 months Weed competitiveness/canopy formation Best,3 months Weed competitiveness/canopy formation Worst off,3months Branching habit/architecture of the plant       Best,3months Branching habit/architecture of the plant     Worst off,3months Disease resistance Best,3months Disease resistance Worst off,6MAP.Overall.impression.Best,6MAP.Overall.impression.Worst off,6MAP.Survival.Best,6MAP.Survival.Worst.off,6map.Plant.growth.Best,6map.Plant.growth.Worst.off,6map.canopy.formation.Best,6map.canopy.formation.Worst.off,6map.Branching.habit.Best,6map.Branching.habit.Worst.off,6map.Disease.Best,6map.Disease.Worst.off,9map Best Overall impression,9map Overall impression Worst off,9mapPlant growth Best,9map Plant growth Worst off,9map canopy formation  Best,9map canopy formation  Worst off,9map Branching habit Best,9map Branching habit Worst off,9map suitability to soil Best,9map suitability to soil Worst off
+1,F,Single,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3739.536N  7'1817.724E,"TMS14F1301P0004
+","TMS13F2110P0008
+","IITA-TMS-IBA30572
+",C,A,C,A,C,A,C,A,C,A,C,B,C,B,C,B,C,B,C,B,NIL,NIL,B,C,C,B,B,C,A,B,A,B,C,B,A,C,A,C,A,C,A,B,A,C
+2,F,Single,JS3,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3729.39N  7'1833.97E,"TMS14F1223P0007
+","TMS14F1310P0015
+","TMS13F1160P0004
+",A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,A,B,C,B,C,A,A,B,C,B,A,B,C,B,A,B,A,B,A,B
+3,M,Married,NCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3738.376N  7'180.084E,"TMS13F1307P0016
+","TMS13F1343P0022
+","TMS14F1195P0005
+",B,C,B,C,B,C,B,C,B,C,A,C,A,C,A,C,A,C,A,C,NIL,NIL,A,B,A,C,A,B,A,B,C,A,C,B,A,C,A,C,A,B,C,A,A,C
+4,M,Married,B.Sc,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3743.96N  7'1812.432E,"TMS-IBA961632
+","TMS13F1343P0002
+","TMEB419
+",A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,NIL,NIL,A,C,A,C,C,B,B,C,B,C,C,B,A,C,C,B,A,B,B,A,A,C
+5,F,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3742.8N  7'1830.882E,"TMEB693
+","TMS13F1153P0001
+","TMS14F1310P0004
+",A,C,A,C,A,C,B,C,A,C,B,C,B,C,B,C,B,C,B,C,NIL,NIL,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,B,C,A,C
+6,F,Single,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'942.1N  7'167.82E,"IITA-TMS-IBA980581
+","K195
+","TMS13F1053P0010
+",C,B,C,B,C,B,C,B,C,B,A,B,A,B,A,B,A,B,A,B,NIL,NIL,A,C,A,C,A,C,A,C,B,A,B,C,A,C,A,C,A,C,B,C,A,C
+7,M,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'374.674N  7'1823.014E,"TMEB7
+","TMS14F1301P0013
+","TMS14F1291P0012
+",C,A,C,A,C,A,C,A,C,A,B,C,B,C,B,C,B,C,B,C,NIL,NIL,B,C,B,A,A,C,A,C,C,A,A,B,B,A,A,C,B,A,B,A,A,C
+8,F,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3740.674N  7'1823.064E,"TMEB7
+","TMS14F1306P0015
+","TMS13F1343P0044
+",C,A,C,A,C,A,C,A,C,A,C,B,C,B,A,C,C,A,NIL,NIL,NIL,NIL,A,B,A,B,A,C,C,A,A,C,B,A,A,C,A,C,,A,A,C,A,C
+9,F,Married,FSLC,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3737.72N  7'1810.67E,"TMS13F1153P0001
+","TMS14F1291P0012
+","TMS14F1291P0003
+",C,B,C,B,C,B,A,C,C,B,C,A,B,A,A,C,B,A,NIL,NIL,NIL,NIL,B,A,B,A,B,C,B,C,A,C,B,A,B,C,B,C,C,B,A,C,B,C
+10,F,Married,SSCE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3739.73N  7'1814.322E,"TMS13F1343P0044
+","TMS14F1035P0004
+","TMS13F1307P0016
+",C,A,C,A,C,A,A,B,C,A,C,B,C,B,A,C,B,A,B,C,C,A,C,B,C,B,C,B,A,C,B,A,C,B,C,A,C,A,C,A,B,A,C,A
+11,F,Married ,B Sc,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3742.51N  7'1830.882E,"IITA-TMS-IBA000070
+","IITA-TMS-IBA980581
+","TMS14F1301P0013
+",B,C,B,C,B,C,A,C,B,C,A,C,A,C,A,C,C,A,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,B,A,C,A,C,A,C,A,C,A,C
+12,M,Married,WACE,Umualumaku,Ehime Mbano,Okiigwe,Imo,5.3739.14N  7'1817.808E,"TMS13F1088P0007
+","TMS13F1343P0044
+","TMS13F1343P0022
+",C,A,C,A,C,A,A,B,C,A,C,A,C,A,C,A,A,B,C,A,C,A,C,A,C,A,C,A,A,B,C,A,C,A,C,A,C,A,A,B,C,B,C,A
+13,F,Married,FSLC,Umualumaku,Ehime Mbano,Okiigwe,Imo,5'3731.212N  7'189.066E,"TMS13F1053P0010
+","TMEB2
+","TMS-IBA961632
+",C,A,C,A,C,A,C,A,C,A,C,B,C,B,C,B,A,B,A,C,C,B,C,B,C,B,C,B,B,C,A,B,A,B,C,B,C,B,B,A,A,B,C,B
+14,F,Married,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,5'3744.45N  7'1944.26E,"TMS13F2110P0008
+","TMS13F1343P0002
+","TMEB7
+",A,B,A,B,A,B,A,C,A,B,A,B,A,B,C,B,A,B,A,B,A,B,A,C,C,B,A,B,A,B,B,A,A,B,A,B,C,B,A,C,A,B,C,B
+15,F,Married ,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,5'3744.45N  7'1944.26E,"K195
+","TMS14F1291P0003
+","TMEB2
+",A,C,A,C,A,C,A,B,A,C,A,C,B,C,A,C,A,C,A,C,B,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,C
+16,F,Married ,SSCE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,5'3744.45N  7'1944.26E,"TMEB419
+","TMS13F1160P0004
+","IITA-TMS-IBA000070
+",C,B,C,B,C,B,A,C,C,B,A,B,A,B,C,B,C,B,C,B,A,B,C,B,C,B,C,B,A,B,C,B,A,B,C,B,A,B,A,B,C,B,A,B
+17,F,Married,WACE,Umuezegwu,Ihite Uboma,Okiigwe,Imo,5'3725.974N  7'1938.658E,TMS14F1287P0008,"TMS14F1310P0004
+","TMEB693
+",C,A,C,A,C,A,B,A,C,A,C,A,C,A,C,A,B,A,B,A,C,A,C,A,C,A,C,B,B,C,B,C,B,A,C,A,C,A,B,A,B,A,C,A
+18,M,Widower,HND,Umuezegwu,Ihite Uboma,Okiigwe,Imo,5'3744.45N  7'1944.26E,"TMS14F1310P0015
+","TMS14F1223P0007
+","TMS14F1306P0015
+",B,C,B,C,A,C,A,C,B,C,A,C,B,C,A,C,A,C,B,C,A,C,A,C,B,C,A,C,B,C,A,C,C,B,A,C,A,C,A,C,B,C,A,C
+19,F,Married,WACE,Umukara,Ihite Uboma,Okiigwe,Imo,5.3921.84N  7'2153.532E,"TMS14F1035P0004
+","TMS13F1049P0001
+","TMS13F1088P0007
+",C,B,C,B,A,B,A,B,C,B,C,A,C,A,C,A,B,A,A,B,C,A,C,B,C,B,A,B,C,B,C,B,C,B,B,A,B,A,C,A,C,A,B,A
+20,F,Widow,WACE,Umukara,Ihite Uboma,Okiigwe,Imo,5'3918.084N  7'2146.416E,"TMS14F1310P0015
+",TMS14F1287P0008,"IITA-TMS-IBA30572
+",B,A,B,A,B,A,C,A,B,A,A,B,C,A,B,A,A,B,A,B,C,A,B,A,B,A,B,A,B,A,B,C,B,A,C,B,C,B,A,C,A,B,B,C
+21,F,Widow,SSCE,Umukara,Ihite Uboma,Okiigwe,Imo,5'3921.84N  7'2153.532E,"TMS13F1049P0001
+","TMS14F1301P0004
+","TMS14F1195P0005
+",C,A,C,A,C,A,B,A,C,A,C,A,C,A,C,A,C,A,C,A,C,A,A,C,A,C,A,C,A,C,A,C,A,C,B,C,B,C,C,B,A,B,B,C
