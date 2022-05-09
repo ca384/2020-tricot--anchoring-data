@@ -6,15 +6,29 @@ library("patchwork")
 library("qvcalc")
 library("ggparty")
 library("igraph")
+library("ClimMobTools")
+library("multcompView")
+library("ggplot2")
+library("gtools")
+install.packages("remotes")
+library("remotes")
+install_github("hturner/PlackettLuce", upgrade = "never")
+install_github("agrdatasci/gosset", upgrade = "never")
+# install_github("agrdatasci/gosset", upgrade = "never")
+# library("remotes")
+# install_github("hturner/PlackettLuce", upgrade = "never")
+# install_github("agrdatasci/gosset", upgrade = "never")
 source("https://raw.githubusercontent.com/agrobioinfoservices/ClimMob-analysis/master/R/functions.R")
 
 
-# Rank_1map<-rank_tricot(data=tricot1[,13:14], items=c("Variety.A", "Variety.B", "Variety.C"), 
-                           input=c("X1month.Overall.impression.Best","X1month.Overall.impression.Worst.off")
 
-tricot_data<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/tricot data 2020/tricot-1map-single trait.csv")
+# Rank_1map<-rank_tricot(data=tricot1[,13:14], items=c("Variety.A", "Variety.B", "Variety.C"), 
+                           #input=c("X1month.Overall.impression.Best","X1month.Overall.impression.Worst.off")
+
 orig_name<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/tricot data 2020/Final_Tricot_List_30varieties.csv")# that contains 30 tricot list
 #tricot_complete<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/tricot data 2020/Tricot-anchoring1-9map.csv")
+tricot_data<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/tricot data 2020/tricot-1map-single trait.csv")
+
 dim(orig_name)
 dim(tricot_data)
 str(orig_name)
@@ -38,7 +52,7 @@ absent<-all_vars2[(!all_vars2 %in% (orig_name[,2]))]
 
 #tricot_data[tricot_data$Variety.A=="IITA-TMS-IBA30572"]<-TMS_IBA30572
 
-library("tidyverse")
+
 #tricot_data.modified <- tricot_data %>%
  # mutate(Variety.A = ifelse(VARIETY.C == "TMS_IBA30572", "IITA-TMS-IBA30572", VARIETY.C))
 #View(tricot_data.modified)
@@ -83,11 +97,15 @@ dim(Tricot_dat)
 
 Tricot_dat$Variety.A<-gsub("\n", "",Tricot_dat$Variety.A) # removing the extra name (\n at the end of the genotype names)
 Tricot_dat$Variety.B<-gsub("\n", "",Tricot_dat$Variety.B)
-Tricot_dat$VARIETY.C<-gsub("\n", "",Tricot_dat$VARIETY.C)
+Tricot_dat$Variety.C<-gsub("\n", "",Tricot_dat$Variety.C)
+
+dim(Tricot_dat)
+str(Tricot_dat)
+summary(Tricot_dat)
 
 
 Rank_1map<- rank_tricot(data = Tricot_dat,
-                        items = c("Variety.A" ,"Variety.B",  "VARIETY.C"),
+                        items = c("Variety.A" ,"Variety.B",  "Variety.C"),
                         input = c("X1month.Overall.impression.Best", "X1month.Overall.impression.Worst.off"))
 dim(Rank_1map)
 
@@ -96,14 +114,14 @@ View(Rank_1map)
 
 un_Rank<-unclass(Rank_1map)
 
-All_vars<-union(Tricot_dat$Variety.A, Tricot_dat$Variety.B )
-All_vars2<-union(All_vars,Tricot_dat$VARIETY.C )
+library(gosset)
 
 adj_R1map<-adjacency(Rank_1map)# to know how the varieties are connected to the other Ie how many time varieties was prefered
 adj_net_R1map<-network(adj_R1map)
 plot(adj_net_R1map)
 favor_1map<-summarise_favourite(Rank_1map) # looking for favorite varieties describes the data shows how many time one variety wins against the other
 View(favor_1map)
+
 plot(favor_1map)+xlab("genotype")+
   theme_bw()+
   theme(panel.grid = element_blank())
@@ -116,7 +134,7 @@ write_csv(favor_1map,"/Users/chinedoziamaefula/OneDrive - Cornell University/202
 
 #for 3 MAP
 Rank_3map<- rank_tricot(data = Tricot_dat,
-                        items = c("Variety.A" ,"Variety.B",  "VARIETY.C"),
+                        items = c("Variety.A" ,"Variety.B",  "Variety.C"),
                         input = c("X3Months.overall.impression.Best", "X3Months.overall.impression.Worst.off"))
 dim(Rank_3map)
 
@@ -142,7 +160,7 @@ plot(dominace)
 #for 6 MAP
 
 Rank_6map<- rank_tricot(data = Tricot_dat,
-                        items = c("Variety.A" ,"Variety.B",  "VARIETY.C"),
+                        items = c("Variety.A" ,"Variety.B",  "Variety.C"),
                         input = c("X6MAP.Overall.impression.Best", "X6MAP.Overall.impression.Worst.off"))
 dim(Rank_6map)
 
@@ -227,7 +245,7 @@ axis(1, at = seq_len(30), labels = rownames(qv_6$qvframe), las = 2, cex.axis = 0
 #for 9 MAP
 
 Rank_9map<- rank_tricot(data = Tricot_dat,
-                        items = c("Variety.A" ,"Variety.B",  "VARIETY.C"),
+                        items = c("Variety.A" ,"Variety.B",  "Variety.C"),
                         input = c("X9map.Best.Overall.impression", "X9map.Overall.impression.Worst.off"))
 dim(Rank_9map)
 
@@ -266,14 +284,14 @@ axis(1, at = seq_len(30), labels = rownames(qv_9$qvframe), las = 2, cex.axis = 0
 
 #looking for tricot genotypes in uyt36 and uyt34
 
-uyt36_uyt34<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/UYT_inTRICOT/BLUEs-uyt36-34.csv")
-geno_tricot<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/UYT_inTRICOT/Final_Tricot_List_30varieties.csv")
+#uyt36_uyt34<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/UYT_inTRICOT/BLUEs-uyt36-34.csv")
+#geno_tricot<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/UYT_inTRICOT/Final_Tricot_List_30varieties.csv")
 
 
-present<-(uyt36_uyt34[uyt36_uyt34$gen %in% geno_tricot$Genotype,])
-present2 <- count(uyt36_uyt34[uyt36_uyt34$gen %in% geno_tricot$Genotype,])# picking genotypes  present data using geno_tricot
-abs <- (geno_tricot[!geno_tricot$Genotype %in% uyt36_uyt34$gen,])
-abs2<- count(geno_tricot[!geno_tricot$Genotype %in% uyt36_uyt34$gen,])
+#present<-(uyt36_uyt34[uyt36_uyt34$gen %in% geno_tricot$Genotype,])
+#present2 <- count(uyt36_uyt34[uyt36_uyt34$gen %in% geno_tricot$Genotype,])# picking genotypes  present data using geno_tricot
+#abs <- (geno_tricot[!geno_tricot$Genotype %in% uyt36_uyt34$gen,])
+#abs2<- count(geno_tricot[!geno_tricot$Genotype %in% uyt36_uyt34$gen,])
 
 #absent<-(uyt36_uyt34[!uyt36_uyt34$gen %in% geno_tricot$Genotype,])
 #absent<-count(uyt36_uyt34[!uyt36_uyt34$gen %in% geno_tricot$Genotype,])
@@ -285,7 +303,7 @@ colnames(best_all)
 #Rename corename
 library(tidyverse)
 library(dplyr)
-best_all_rename<-rename(best_all,Best_1MAP=favor_1map.best, Best_3MAP=favor_3map.best, Best_6MAP=favor_6map.best, Best_9MAP=favor_9map.best )
+#best_all_rename<-rename(best_all,Best_1MAP=favor_1map.best, Best_3MAP=favor_3map.best, Best_6MAP=favor_6map.best, Best_9MAP=favor_9map.best )
 
 
 
@@ -314,8 +332,8 @@ write.csv(cor_placketluce_estimate,file("cor_placketluce_estimate.csv"))
 ??worth
 
 # Using the complete tricot anchoring harvest data (containg the harvest sensory and agronomic data)
-tricot_harvest_2020<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/2020 harvest tricot.csv")
-dim(tricot_harvest)
+#tricot_harvest_2020<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/2020 harvest tricot.csv")
+#dim(tricot_harvest_2020)
 
 tricot2019<-read.csv('/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/2019 tricot Yield.csv')
 
@@ -548,7 +566,7 @@ coef(summary(mod_eba_2019))
 
 qv_eba_2019<- qvcalc(mod_eba_2019)
 qv_eba_2019$qvframe <- qv_eba_2019$qvframe[order(coef(mod_eba_2019)),]
-plot(qv_eba_2019, xlab = NULL, ylab = "Estimate", main = NULL,
+plot(qv_eba_2019, xlab ="genotypes", ylab = "Estimate", main = "Worth estimate of cassava yield",
      xaxt="n", xlim = c(1, 30))
 axis(1, at = seq_len(30), labels = rownames(qv_eba_2019$qvframe), las = 2, cex.axis = 0.6)
 
@@ -573,13 +591,20 @@ write_csv(corr_table_2019,"/Users/chinedoziamaefula/OneDrive - Cornell Universit
 
 
 #2020 harvest data
-tricot_harvest_2020<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/2020 harvest tricot.csv")
+tricot_harvest_2020<-read.csv("/Users/chinedoziamaefula/Library/CloudStorage/OneDrive-CornellUniversity/2020 Data/2020-tricot-anchoring-github/data/2020 harvest tricot .csv")
 dim(tricot_harvest_2020)
-Rank_Yield_2020<- rank_tricot(data =tricot_harvest_2020,
-                             items = c("Variety.A" ,"Variety.B","Variety.C"),
-                             input = c("Root.trait.Overall.impression.Best", "Root.trait.overall.impression.Worst"))
 
-dim(Rank_Yield_2020)
+Tricot_dat$Variety.A<-gsub("\n", "",Tricot_dat$Variety.A) # removing the extra name (\n at the end of the genotype names)
+Tricot_dat$Variety.B<-gsub("\n", "",Tricot_dat$Variety.B)
+Tricot_dat$Variety.C<-gsub("\n", "",Tricot_dat$Variety.C)
+
+
+Rank_garri_2020<- rank_tricot(data =tricot_harvest_2020,
+                             items = c("Variety.A","Variety.B","Variety.C"),
+                             input = c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst"))
+
+dim(Rank_garri_2020)
+
 
 # for missing data 
 library("PlackettLuce")
@@ -601,9 +626,6 @@ fillNAs <- function(x){
 }
 
 
-tricot_harvest_2020<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/2020 harvest tricot.csv")
-dim(tricot_harvest_2020)
-
 
 
 keep <- apply(tricot_harvest_2020[c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst")], 1, is.na)
@@ -621,70 +643,441 @@ keep <- keep & keep2
 # use this vector to filter the data, is likely that this will not work with other traits
 # so it need to be updated for each trait
 # we supply the vector direct into the function in gosset
-?rank_tricot
+
+colnames(tricot_harvest_2020)
+
 
 # an object of class rankings 
-Rank_harvest_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
+Rank_garri_trait_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
                  items = c("Variety.A", "Variety.B", "Variety.C"),
                  input = c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst"))
 
-# or grouped rankings
-G <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
-                 items = c("Variety.A", "Variety.B", "Variety.C"),
-                 input = c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst"),
-                 group = TRUE)
-
-#G
 
 
-#PlackettLuce(R)
+dim(Rank_garri_trait_2020)
 
-dim(Rank_harvest_2020)
+un_Rank_garri_2020<-unclass(Rank_garri_trait_2020)
 
-un_Rank_harvest_2020<-unclass(Rank_harvest_2020)
+adj_garri_2020<-adjacency(Rank_garri_trait_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
+adj_net_garri_2020<-network(adj_garri_2020)
+plot(adj_net_garri_2020)
 
-adj_harvest_2020<-adjacency(Rank_harvest_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
-adj_net_harvest_2020<-network(adj_harvest_2020)
-plot(adj_net_harvest_2020)
-
-favor_harvest_2020<-summarise_favourite(Rank_harvest_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
-View(favor_harvest_2020)
-plot(favor_harvest_2020)+ xlab("genotype")+ylab("score")+
+favor_garri_2020<-summarise_favourite(Rank_garri_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
+View(favor_garri_2020)
+plot(favor_garri_2020)+ xlab("genotype")+ylab("score")+
   theme_bw()+
   theme(panel.grid = element_blank())
 
-write_csv(favor_harvest_2020,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/Favorability_yield_2020.csv")
+#write_csv(favor_harvest_2020,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/Favorability_yield_2020.csv")
 
-mod_harvest_2020 <- PlackettLuce(Rank_harvest_2020, npseudo = 0.5)
-summary(mod_harvest_2020)
-summary(mod_harvest_2020, ref = NULL)
+mod_garri_2020 <- PlackettLuce(Rank_garri_trait_2020, npseudo = 0.5)
+summary(mod_garri_2020)
+garri.estimate <- summary(mod_garri_2020, ref = NULL)# removes the reference from zero
+coeff.estimate.garri <- data.frame(garri.estimate$coefficients)
 
-qv_harvest<- qvcalc(mod_harvest_2020)
-summary(qv_harvest_2020)
+write_csv(coeff.estimate.garri,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri quality.csv")
 
+garri.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri quality.csv")
 
-coef(summary(mod_harvest_2020))
+qv_harvest<- qvcalc(mod_garri_2020)
+summary(qv_garri)
 
-qv_harvest_2020<- qvcalc(mod_harvest_2020)
-qv_harvest_2020$qvframe <- qv_harvest_2020$qvframe[order(coef(mod_harvest_2020)),]
-plot(qv_harvest_2020, xlab = NULL, ylab = "Estimate", main = NULL,
+coef(summary(mod_garri_2020))
+
+qv_garri_2020<- qvcalc(mod_garri_2020)
+qv_garri_2020$qvframe <- qv_garri_2020$qvframe[order(coef(mod_garri_2020)),]
+plot(qv_garri_2020, xlab = NULL, ylab = "Estimate", main = "Worth estimate of garri quality",
      xaxt="n", xlim = c(1, 30))
-axis(1, at = seq_len(30), labels = rownames(qv_harvest_2020$qvframe), las = 2, cex.axis = 0.6)
+axis(1, at = seq_len(30), labels = rownames(qv_garri_2020$qvframe), las = 2, cex.axis = 0.6)
+
+
+
+#Eba
+
+fillNAs <- function(x){
+  
+  for (i in seq_along(x)) {
+    
+    if (is.na(x[i])) {
+      x[i] <- x[i-1]
+    }
+    
+  }
+  
+  x
+}
 
 
 
 
-newnames_harvest <- make_clean_names(names(tricot_harvest_2020))
-newnames_harvest
+keep <- apply(tricot_harvest_2020[c("garri.colour..Best", "garri.colour.Worst")], 1, is.na)
+keep <- as.vector(colSums(keep) == 0)
 
-newnames_harvest <- gsub("NA|[...]|[/]| |[0-9]+", "", newnames_harvest)
-newnames_harvest <- gsub("x_", NA, newnames_harvest)
-newnames_harvest<- fillNAs(newnames_harvest)
+# no ties
+keep2 <- apply(tricot_harvest_2020[c("garri.colour..Best", "garri.colour.Worst")], 1, function(x) {
+  x[1] != x[2]
+})
 
-index <- which(duplicated(newnames_harvest))
-newnames_harvest[index] <- paste0(newnames_harvest[index], "_worst")
+keep2 <- keep2 == 1
 
-newnames_harvest[index-1] <- paste0(newnames_harvest[index-1], "_best")
+keep <- keep & keep2
+
+
+Rank_garri_color_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
+                                     items = c("Variety.A", "Variety.B", "Variety.C"),
+                                     input = c("garri.colour..Best", "garri.colour.Worst"))
+
+dim(Rank_garri_color_2020)
+
+un_Rank_garri_color_2020<-unclass(Rank_garri_color_2020)
+
+adj_garri_color_2020<-adjacency(Rank_garri_color_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
+adj_net_garri_color_2020<-network(adj_garri_color_2020)
+plot(adj_net_garri_color_2020)
+
+favor_eba_2020<-summarise_favourite(Rank_garri_color_trait_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
+View(favor_garri_color_2020)
+plot(favor_garri_color_2020)+ xlab("genotype")+ylab("score")+
+  theme_bw()+
+  theme(panel.grid = element_blank())
+
+
+mod_garri_color_2020 <- PlackettLuce(Rank_garri_color_2020, npseudo = 0.5)
+summary(mod_garri_color_2020)
+garri_color.estimate <- summary(mod_garri_color_2020, ref = NULL)# removes the reference from zero
+coeff.estimate.garri_color <- data.frame(garri_color.estimate$coefficients)
+
+write_csv(coeff.estimate.garri_color,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_color.csv")
+
+garri_color.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_color.csv")
+
+qv_garri_color<- qvcalc(mod_garri_color_2020)
+summary(qv_garri_color)
+
+coef(summary(mod_garri_color_2020))
+
+
+qv_garri_color<- qvcalc(mod_garri_color_2020)
+qv_garri_color$qvframe <- qv_garri_color$qvframe[order(coef(mod_garri_color_2020)),]
+plot(qv_garri_color, xlab = NULL, ylab = "Estimate", main = "Worth estimate of garri color",
+     xaxt="n", xlim = c(1, 30))
+axis(1, at = seq_len(30), labels = rownames(qv_garri_color$qvframe), las = 2, cex.axis = 0.6)
+
+
+#garri heaviness
+
+fillNAs <- function(x){
+  
+  for (i in seq_along(x)) {
+    
+    if (is.na(x[i])) {
+      x[i] <- x[i-1]
+    }
+    
+  }
+  
+  x
+}
+
+
+
+
+keep <- apply(tricot_harvest_2020[c("garri.Heaviness.Best", "garri.Heaviness..Worst")], 1, is.na)
+keep <- as.vector(colSums(keep) == 0)
+
+# no ties
+keep2 <- apply(tricot_harvest_2020[c("garri.Heaviness.Best", "garri.Heaviness..Worst")], 1, function(x) {
+  x[1] != x[2]
+})
+
+keep2 <- keep2 == 1
+
+keep <- keep & keep2
+
+
+Rank_garri_heaviness_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
+                                     items = c("Variety.A", "Variety.B", "Variety.C"),
+                                     input = c("garri.Heaviness.Best", "garri.Heaviness..Worst"))
+
+dim(Rank_garri_heaviness_2020)
+
+un_Rank_garri_heaviness_2020<-unclass(Rank_garri_heaviness_2020)
+
+adj_garri_heaviness_2020<-adjacency(Rank_garri_heaviness_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
+adj_net_garri_heaviness_2020<-network(adj_garri_heaviness_2020)
+plot(adj_net_garri_heaviness_2020)
+
+favor_garri_heaviness_2020<-summarise_favourite(Rank_garri_heaviness_trait_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
+View(favor_garri_heaviness_2020)
+plot(favor_garri_heaviness_2020)+ xlab("genotype")+ylab("score")+
+  theme_bw()+
+  theme(panel.grid = element_blank())
+
+
+mod_garri_heaviness_2020 <- PlackettLuce(Rank_garri_heaviness_2020, npseudo = 0.5)
+summary(mod_garri_heaviness_2020)
+garri_heaviness.estimate <- summary(mod_garri_heaviness_2020, ref = NULL)# removes the reference from zero
+coeff.estimate.garri_heaviness <- data.frame(garri_heaviness.estimate$coefficients)
+
+write_csv(coeff.estimate.garri_heaviness,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_heaviness.csv")
+
+garri_heaviness.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_heaviness.csv")
+
+qv_garri_heaviness<- qvcalc(mod_garri_heaviness_2020)
+summary(qv_garri_heaviness)
+
+coef(summary(mod_garri_heaviness_2020))
+
+
+qv_garri_heaviness<- qvcalc(mod_garri_heaviness_2020)
+qv_garri_heaviness$qvframe <- qv_garri_heaviness$qvframe[order(coef(mod_garri_heaviness_2020)),]
+plot(qv_garri_heaviness, xlab = NULL, ylab = "Estimate", main = "Worth estimate of garri heaviness",
+     xaxt="n", xlim = c(1, 30))
+axis(1, at = seq_len(30), labels = rownames(qv_garri_heaviness$qvframe), las = 2, cex.axis = 0.6)
+
+
+
+
+
+fillNAs <- function(x){
+  
+  for (i in seq_along(x)) {
+    
+    if (is.na(x[i])) {
+      x[i] <- x[i-1]
+    }
+    
+  }
+  
+  x
+}
+
+
+
+
+keep <- apply(tricot_harvest_2020[c("garri.Smoothness.Best", "garri.Smoothness.Worst")], 1, is.na)
+keep <- as.vector(colSums(keep) == 0)
+
+# no ties
+keep2 <- apply(tricot_harvest_2020[c("garri.Smoothness.Best", "garri.Smoothness.Worst")], 1, function(x) {
+  x[1] != x[2]
+})
+
+keep2 <- keep2 == 1
+
+keep <- keep & keep2
+
+
+Rank_garri_Smoothness_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
+                                         items = c("Variety.A", "Variety.B", "Variety.C"),
+                                         input = c("garri.Smoothness.Best", "garri.Smoothness.Worst"))
+
+dim(Rank_garri_Smoothness_2020)
+
+un_Rank_garri_Smoothness_2020<-unclass(Rank_garri_Smoothness_2020)
+
+adj_garri_Smoothness_2020<-adjacency(Rank_garri_Smoothness_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
+adj_net_garri_Smoothness_2020<-network(adj_garri_Smoothness_2020)
+plot(adj_net_garri_Smoothness_2020)
+
+favor_garri_Smoothness_2020<-summarise_favourite(Rank_garri_Smoothness_trait_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
+View(favor_garri_Smoothness_2020)
+plot(favor_garri_Smoothness_2020)+ xlab("genotype")+ylab("score")+
+  theme_bw()+
+  theme(panel.grid = element_blank())
+
+
+mod_garri_Smoothnesss_2020 <- PlackettLuce(Rank_garri_Smoothness_2020, npseudo = 0.5)
+summary(mod_garri_Smoothnesss_2020)
+garri_Smoothness.estimate <- summary(mod_garri_Smoothnesss_2020, ref = NULL)# removes the reference from zero
+coeff.estimate.garri_Smoothness <- data.frame(garri_Smoothness.estimate$coefficients)
+
+write_csv(coeff.estimate.garri_Smoothness,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_Smoothness.csv")
+
+garri_Smoothness.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_Smoothness.csv")
+
+qv_garri_Smoothness<- qvcalc(mod_garri_Smoothnesss_2020)
+summary(qv_garri_Smoothness)
+
+coef(summary(mod_garri_Smoothnesss_2020))
+
+
+qv_garri_Smoothness<- qvcalc(mod_garri_Smoothnesss_2020)
+qv_garri_Smoothness$qvframe <- qv_garri_Smoothness$qvframe[order(coef(mod_garri_Smoothnesss_2020)),]
+plot(qv_garri_Smoothness, xlab = NULL, ylab = "Estimate", main = "Worth estimate of garri Smoothness",
+     xaxt="n", xlim = c(1, 30))
+axis(1, at = seq_len(30), labels = rownames(qv_garri_Smoothness$qvframe), las = 2, cex.axis = 0.6)
+
+
+
+#garri taste
+fillNAs <- function(x){
+  
+  for (i in seq_along(x)) {
+    
+    if (is.na(x[i])) {
+      x[i] <- x[i-1]
+    }
+    
+  }
+  
+  x
+}
+
+
+
+
+keep <- apply(tricot_harvest_2020[c("garri.Taste.Best", "garri.Taste.Worst")], 1, is.na)
+keep <- as.vector(colSums(keep) == 0)
+
+# no ties
+keep2 <- apply(tricot_harvest_2020[c("garri.Taste.Best", "garri.Taste.Worst")], 1, function(x) {
+  x[1] != x[2]
+})
+
+keep2 <- keep2 == 1
+
+keep <- keep & keep2
+
+
+Rank_garri_Taste_2020 <- rank_tricot(tricot_harvest_2020[keep, ], # HERE!
+                                          items = c("Variety.A", "Variety.B", "Variety.C"),
+                                          input = c("garri.Taste.Best", "garri.Taste.Worst"))
+
+dim(Rank_garri_Taste_2020)
+
+un_Rank_garri_Taste_2020<-unclass(Rank_garri_Taste_2020)
+
+adj_garri_Taste_2020<-adjacency(Rank_garri_Taste_2020)# to know how the varieties are connected to the other Ie how many time varieties was prefered
+adj_net_garri_Taste_2020<-network(adj_garri_Taste_2020)
+plot(adj_net_garri_Taste_2020)
+
+favor_garri_Taste_2020<-summarise_favourite(Rank_garri_Taste_trait_2020) # looking for favorite varieties describes the data shows how many time one variety wins against the other
+View(favor_garri_Taste_2020)
+plot(favor_garri_Taste_2020)+ xlab("genotype")+ylab("score")+
+  theme_bw()+
+  theme(panel.grid = element_blank())
+
+
+mod_garri_Taste_2020 <- PlackettLuce(Rank_garri_Taste_2020, npseudo = 0.5)
+summary(mod_garri_Taste_2020)
+garri_Taste.estimate <- summary(mod_garri_Taste_2020, ref = NULL)# removes the reference from zero
+coeff.estimate.garri_Taste <- data.frame(garri_Taste.estimate$coefficients)
+coeff.estimate.garri_Taste1 <- data.frame(garri_Taste.estimate$coefficients)
+
+write_csv(coeff.estimate.garri_Taste,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_Smoothness.csv")
+
+garri_Taste.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri_Smoothness.csv")
+
+qv_garri_Taste<- qvcalc(mod_garri_Taste_2020)
+summary(qv_garri_Taste)
+
+coef(summary(mod_garri_Taste_2020))
+
+
+qv_garri_Taste<- qvcalc(mod_garri_Taste_2020)
+qv_garri_Taste$qvframe <- qv_garri_Taste$qvframe[order(coef(mod_garri_Taste_2020)),]
+plot(qv_garri_Taste, xlab = NULL, ylab = "Estimate", main = "Worth estimate of garri Taste",
+     xaxt="n", xlim = c(1, 30))
+axis(1, at = seq_len(30), labels = rownames(qv_garri_Taste$qvframe), las = 2, cex.axis = 0.6)
+
+library(corrplot)
+Garri_quality <- garri.estimates$Estimate
+Smoothness <- garri_Smoothness.estimates$Estimate
+Taste <- garri_Taste.estimates$Estimate
+Heaviness <- garri_heaviness.estimates$Estimate 
+Color <-garri_color.estimates$Estimate 
+rownames(garri.estimates)
+
+
+cor(Color,Heaviness)
+cor(Color,Taste)
+cor(Color,Smoothness)
+cor(Color,Garri_quality)
+
+cor(Heaviness,Color)
+cor(Heaviness,Taste )
+cor(Heaviness,Smoothness )
+cor(Heaviness,Garri_quality)
+
+cor(Taste,Color)
+cor(Taste,Heaviness )
+cor(Taste,Smoothness)
+cor(Taste,Garri_quality)
+
+cor(Smoothness,Garri_quality)
+cor(Smoothness,Color)
+cor(Smoothness,Heaviness)
+cor(Smoothness,Taste)
+
+
+
+Garri_trait <-as.data.frame(cbind(Garri_quality,Smoothness,Taste,Heaviness ,Color ))
+View(Garri_trait)
+
+corrplot(Garri_trait, method = 'color', order = 'alphabet')
+
+corrplot(Garri_trait, method = 'square', order = 'FPC', type = 'lower', diag = FALSE)
+
+
+
+#Chemical Analysis
+Functional <- read.csv("/Users/chinedoziamaefula/Library/CloudStorage/OneDrive-CornellUniversity/ALL PHD DATA/2020:2021 ALL TRICOT DATA/2020_Tricot_Physicochemical.csv")
+str(Functional)
+dim(Functional)
+
+head(Functional)
+Functional$CLONE.NAMES<-gsub("\n", "",Functional$CLONE.NAMES) # removing the extra name (\n at the end of the genotype names)
+
+summary(Functional)
+library(dplyr)
+
+library(dplyr)
+Functional %>% select(NAMES,  CLONE.NAMES, SP, AMYLOSE,DM) 
+
+group.func <- Functional %>% group_by(NAMES,  CLONE.NAMES)
+
+Ave_duplicates <- group.func %>%
+  group_by(NAMES,CLONE.NAMES) %>%
+  summarise_at(vars(SP,DM,AMYLOSE), list( mean)) # averaging base on the duplicates
+
+Ave_duplicates1 <- as.data.frame(Ave_duplicates)
+
+SP <- Ave_duplicates1$SP 
+CLONE.NAMES <- Ave_duplicates1$CLONE.NAMES
+NAMES <- Ave_duplicates1$NAMES
+SP_df <- as.data.frame(cbind(NAMES,CLONE.NAMES,SP))
+SP_MAX <- SP_df %>% group_by(CLONE.NAMES) %>% slice(which.max(SP)) # Picking the  genotype with the highest mean
+SP_MAX$SP <- as.numeric(SP_MAX$SP)
+garri.estimates <- read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/coeff.estimate_garri quality.csv")
+str(garri.estimates)
+str(SP_MAX)
+
+Cor_SP<- cor(garri.estimates$Estimate,SP_MAX$SP)
+Plot()
+
+#Highest <- aggregate(Ave_duplicates$CLONE.NAMES, by = list(Ave_duplicates$SP), max)
+rm(Highest)
+
+
+Ave_duplicates2 <- group.func %>%
+  group_by(CLONE.NAMES) %>%
+  summarise_at(vars(SP,DM,AMYLOSE,), list(name = mean) %>%
+                 slice(which.max(points)))
+               # averaging base on the duplicates
+
+ad <- 
+#newnames_harvest <- make_clean_names(names(tricot_harvest_2020))
+#newnames_harvest
+
+#newnames_harvest <- gsub("NA|[...]|[/]| |[0-9]+", "", newnames_harvest)
+#newnames_harvest <- gsub("x_", NA, newnames_harvest)
+#newnames_harvest<- fillNAs(newnames_harvest)
+
+#index <- which(duplicated(newnames_harvest))
+#newnames_harvest[index] <- paste0(newnames_harvest[index], "_worst")
+
+#newnames_harvest[index-1] <- paste0(newnames_harvest[index-1], "_best")
 
 
 ### Kaeu script
@@ -770,45 +1163,231 @@ PlackettLuce(R)
 
 all_timepoint<-data.frame(qv_1map$qvframe$estimate, qv_3$qvframe$estimate, qv_6$qvframe$estimate, qv_9$qvframe$estimate,qv_garri$qvframe$estimate)
 colnames(all_timepoint)
-# Analysis for garri 2020
-Rank_garri_2020<- rank_tricot(data =tricot_harvest_2020,
-                             items = c("Variety.A" ,"Variety.B","Variety.C"),
-                             input = c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst"))
 
-dim(Rank_garri)
+#############################################################################################################
+#Placket for missing data
+library("gosset")
+library("tidyverse")
+library("ClimMobTools")
+library("PlackettLuce")
+library("gtools")
+library("ggparty")
+library("patchwork")
+library("ggplot2")
+library("multcompView")
 
-un_Rank_garri<-unclass(Rank_garri)
+library("gosset")
+library("tidyverse")
+library("ClimMobTools")
+library("PlackettLuce")
+library("gtools")
+library("ggparty")
+library("patchwork")
+library("ggplot2")
+library("multcompView")
 
-adj_garri<-adjacency(Rank_garri)# to know how the varieties are connected to the other Ie how many time varieties was prefered
-adj_net_garri<-network(adj_garri)
-plot(adj_net_garri)
+#Declare new functions
+setorder <- function(x){
+  s <- rep(2, times=3) #default value is 2
+  L <- LETTERS[1:3]
+  
+  #works backwards from C to A to give most importance to item(s) listed as better
+  s[L %in% strsplit(x[2], split="")] <- 3
+  s[L %in% strsplit(x[1], split="")] <- 1
+  
+  #avoid skipped numbers
+  s <- order(s)
+  return(s)
+  
+}
 
-favor_garri<-summarise_favourite(Rank_garri) # looking for favorite varieties describes the data shows how many time one variety wins against the other
-View(favor_garri)
-plot(favor_garri)+ xlab("genotype")+ylab("score")+
-  theme_bw()+
-  theme(panel.grid = element_blank())
+rank_tricot2 <- function (x = NULL, items = NULL, input = NULL, group = FALSE, 
+                          additional.rank = NULL, ...) 
+{
+  #if (is.null(data)) {
+  #  stop("argument 'data' is missing with no default")
+  #}
+  #if (.is_tibble(data)) {
+  #  data <- as.data.frame(data, stringsAsFactors = FALSE)
+  #}
+  items <- x[, items]
+  input <- x[, input]
+  n <- nrow(x)
+  dots <- list(...)
+  full.output <- dots[["full.output"]]
+  full.output <- isTRUE(full.output)
+  ncomp <- ncol(items)
+  if (ncomp == 3) {
+    r <- .pivot_triadic2(i = items, r = input)
+  }
+  #if (ncomp >= 4) {
+  #  r <- .pivot_tetra(i = items, r = input)
+  #}
+  
+  R <- PlackettLuce::as.rankings(r)
+  
+  #if (!is.null(additional.rank)) {
+  #  R <- .additional_rankings(i = items, R = R, add = additional.rank)
+  #}
+  gi <- rep(seq_len(n), (nrow(R)/n))
+  G <- PlackettLuce::group(R, index = gi) #TODO avoid this operation is full.output and group are FALSE
+  if (full.output) {
+    R <- list(PLranking = R, PLgrouped = G, myrank = r)
+  }
+  if (group) {
+    R <- G
+  }
+  return(R)
+}
 
-write_csv(favor_garri,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/Favorability_garri.csv")
+.pivot_triadic2 <- function(i, r) {
+  
+  n <- nrow(i)
+  
+  #if (any(is.na(unlist(r)))) {
+  #  stop("NAs cannot be handled in tricot rankings \n")
+  #}
+  
+  #if (any(r[,1] == r[,2])) {
+  #  stop("Ties cannot be handled in tricot rankings \n")
+  #}
+  
+  # check for more than two missing labels in items
+  mi <- rowSums(apply(i, 2, is.na))
+  if( any(mi > 1) ) {
+    stop("Cannot handle less than 2 NAs per row in 'items' \n")
+  }
+  
+  # if there is one NA per row in items and observations 
+  # with only two items add a pseudo-item 
+  if (any(mi == 1) )  {
+    i[is.na(i)] <- "Z"
+  }
+  
+  im <- as.matrix(i)
+  uniqueitems <- unique(as.vector(im))
+  m <- matrix(0, nrow= n, ncol=length(uniqueitems))
+  colnames(m) <- uniqueitems
+  
+  for(j in 1:n) m[j, im[j,]] <- setorder(as.vector(unlist(r[j,])))
+  
+  return(m)
+  
+}
 
-mod_garri <- PlackettLuce(Rank_garri, npseudo = 0.5)
-summary(mod_garri)
-summary(mod_garri, ref = NULL)
 
-qv_garri<- qvcalc(mod_garri)
-summary(qv_garri)
+#setwd("C:/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/data")
+dt_harvest<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/data/2020 harvest tricot.csv")
+
+dt_harvest <- data.frame(dt_harvest)# make data frame
+
+dt_harvest$Variety_A<-gsub("\n", "",dt_harvest$Variety_A) # removing the extra name (\n at the end of the genotype names)
+dt_harvest$Variety_B<-gsub("\n", "",dt_harvest$Variety_B)
+dt_harvest$Variety_C<-gsub("\n", "",dt_harvest$Variety_C)
+
+
+tail(dt_harvest)
+str(dt_harvest)
+for (i in 1:8){
+  dt_harvest[,i] = as.factor(dt_harvest[,i])
+}
+
+R_yield_2020 <- rank_tricot2(x= dt_harvest, 
+                   items = c("Variety_A" ,"Variety_B","Variety_C"),
+                  input = c("Root.trait.Overall.impression.Best","Root.trait.overall.impression.Worst"))
+
+class(R_yield_2020)
+dim(R_yield_2020)
+head(R_yield_2020)
+
+# convert the PlackettLuce rankings into a matrix
+unclass_R_yield <- unclass(R_yield_2020)
+
+adj_yield_2020 <- adjacency(R_yield_2020)
+
+adj_yield_2020<- igraph::graph_from_adjacency_matrix(adj_yield_2020 )
+
+plot(adj_yield_2020)
+
+# now look for the favourability
+favour_yield_2020 <- summarise_favourite(R_yield_2020)
+
+plot(favour_yield_2020) + 
+  theme_bw() +
+  theme(panel.grid = element_blank()) # favourability score for cassava roots
+
+write_csv(favour_yield_2020,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/Favorability_root quality.csv")
+
+mod_root <- PlackettLuce(R_yield_2020, npseudo = 0.5)
+summary(mod_root)
+summary(mod_root, ref = NULL)
+
+qv_root<- qvcalc(mod_root)
+summary(qv_root)
 #plot(qv_9map, xlab = "genotypes", ylab = "estimate", main = NULL)
 
-coef(summary(mod_garri))
+coef(summary(mod_root))
 
-qv_garri<- qvcalc(mod_garri)
-qv_garri$qvframe <- qv_garri$qvframe[order(coef(mod_garri)),]
-plot(qv_garri, xlab = NULL, ylab = "Estimate", main = NULL,
+qv_root<- qvcalc(mod_root)
+qv_root$qvframe <- qv_root$qvframe[order(coef(mod_root)),]
+plot(qv_root, xlab = NULL, ylab = "Estimate", main = NULL,
      xaxt="n", xlim = c(1, 30))
-axis(1, at = seq_len(30), labels = rownames(qv_garri$qvframe), las = 2, cex.axis = 0.6)
+axis(1, at = seq_len(30), labels = rownames(qv_root$qvframe), las = 2, cex.axis = 0.6)
+
+
+
+
+# Analysis for garri 2020
+Rank_garri_2020<- rank_tricot2(x=dt_harvest,
+                              items = c("Variety_A" ,"Variety_B","Variety_C"),
+                              input = c("overall.impression.garri.trait.Best", "overall.impression.garri.trait..Worst"))
+
+
+
+class(Rank_garri_2020)
+dim(Rank_garri_2020)
+head(Rank_garri_2020)
+
+# convert the PlackettLuce rankings into a matrix
+unclass_R_garri <- unclass(Rank_garri_2020)
+
+adj_garri_2020 <- adjacency(Rank_garri_2020)
+
+adj_garri_2020 <- igraph::graph_from_adjacency_matrix(adj_garri_2020 )
+
+plot(adj_garri_2020)
+
+# now look for the favourability
+favour_garri_2020 <- summarise_favourite(Rank_garri_2020)
+
+plot(favour_garri_2020) + 
+  theme_bw() +
+  theme(panel.grid = element_blank()) # favourability score for cassava roots
+
+write_csv(favour_yield_2020,"/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020-tricot-anchoring-github/Favorability_root quality.csv")
+
+mod_root <- PlackettLuce(R_yield_2020, npseudo = 0.5)
+summary(mod_root)
+summary(mod_root, ref = NULL)
+
+qv_root<- qvcalc(mod_root)
+summary(qv_root)
+#plot(qv_9map, xlab = "genotypes", ylab = "estimate", main = NULL)
+
+coef(summary(mod_root))
+
+qv_root<- qvcalc(mod_root)
+qv_root$qvframe <- qv_root$qvframe[order(coef(mod_root)),]
+plot(qv_root, xlab = NULL, ylab = "Estimate", main = NULL,
+     xaxt="n", xlim = c(1, 30))
+axis(1, at = seq_len(30), labels = rownames(qv_root$qvframe), las = 2, cex.axis = 0.6)
+
+library(dplyr)
 
 
 #best_all_rename<-rename(best_all,Best_1MAP=favor_1map.best, Best_3MAP=favor_3map.best, Best_6MAP=favor_6map.best, Best_9MAP=favor_9map.best )
 
-
+# working on the harvest data, functional properties and the processing data for the tricot  anchoring experiment
+install.packages("readxl")
+library(readxl)
 
