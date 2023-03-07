@@ -1,0 +1,218 @@
+---
+title: "Tricot for 2022 data"
+output: html_document
+date: "2023-02-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+packages_used <- c("tidyverse", "ggplot2", "here","climatrends" ,"tidyverse", "PlackettLuce","gosset", "patchwork","qvcalc","ggparty","igraph", "ClimMobTools", "multcompView","ggplot2", "gtools","remotes","here")
+ip <- installed.packages()
+all_packages_installed <- TRUE
+for (package in packages_used){
+  if (!(package %in% ip[,"Package"])){
+    print(paste("Please install package", package))
+    all_packages_installed <- FALSE
+  }
+}#END packages_used
+if (!all_packages_installed) stop("Need to install packages")
+```
+
+
+
+```{r pressure, echo=FALSE}
+require(here)
+here::i_am("script/Tricot_2021_22_analysis.Rmd")
+```
+
+```{r inport 2022 farmers ranking and removing white spaceon the genotype names}
+Rank_22 <- read.csv(here::here("data","All_2021_2022Tricot _ranking_data.csv"), head=T)
+library(gosset)
+library(PlackettLuce)
+
+
+Rank_22$VARIETY.A = gsub(pattern = " ", replacement = "", x = Rank_22$VARIETY.A) # remove spaces from genotype names
+Rank_22$VARIETY.B = gsub(pattern = " ", replacement = "", x = Rank_22$VARIETY.B) # 
+Rank_22$VARIETY.C = gsub(pattern = " ", replacement = "", x = Rank_22$VARIETY.C) # 
+
+
+
+```
+
+
+```{r for overall for 1MAP}
+
+
+R_1map <- rank_tricot(data = Rank_22,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_Ovi1", "Worst_Ovi1"))
+dim(R_1map)
+mod_R_1p <- PlackettLuce(R_1map, npseudo = 0.5) 
+#summary(Mod_1MAP_qv)
+#datplt = as.data.frame(summary(mod_R_1p$rankings))
+Mod_1MAP_qv <- qvcalc(mod_R_1p )
+Mod_1MAP_qv$qvframe <- Mod_1MAP_qv$qvframe[order(Mod_1MAP_qv$qvframe$estimate),]
+#Mod_1MAP_qv$qvframe <- Mod_1MAP_qv$qvframe
+#plot(x=Mod_1MAP_qv$qvframe)
+plot(Mod_1MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+#axis(1, at = seq_len(30), labels = rownames(Mod_1MAP_qv$qvframe), las = 2, cex.axis = 0.6)
+
+#R_1p <- as.rankings(R_1map)
+
+
+```
+
+```{r trying the placketluce tree}
+#plotting plackettluce tree
+
+R_1map <- rank_tricot(data = Rank_22,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_Ovi1", "Worst_Ovi1"), group = T)
+dim(R_1map)
+
+
+# 
+#ab = summary(mod_R_1p, ref= NULL) # The first genotype was set to zero, this code remove the ref
+#ab$coefficients
+
+# plotting the plakettluce tree
+covariates  <- Rank_22[ ,c("SEX", "EDU", "MS", "COMMUNITY.NAME")]
+
+
+unique_geno <- unique(Rank_22$VARIETY.A)
+covariates$SEX <- as.factor(covariates$SEX)
+covariates$EDU <- as.factor(covariates$EDU)
+covariates$MS <- as.factor(covariates$MS)
+
+covariates$COMMUNITY.NAME <- as.factor(covariates$COMMUNITY.NAME)
+
+pltree_1map <- pltree(R_1map ~ COMMUNITY.NAME, data = covariates,
+                      bonferroni = T,
+                      minsize = 20,
+                      alpha = .1) 
+
+plot(pltree_1map)
+
+
+```
+
+```{r for overall for 6MAP}
+ # To remove column with missing values
+R_6MAP<- rank_tricot(data = Rank_22,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_Ovi6", "Worst_Ovi6"))
+
+mod_6map <- PlackettLuce(R_6MAP, npseudo = 0.5)
+Mod_6MAP_qv <- qvcalc(mod_6map) # tie is preventing the work
+
+
+# "Best_Ovi6", "Worst_Ovi6" has missing data in lines 17 and lowercase letters, I have to remove the missing data and change lowercase to uppercase, else r will see the lowercase as another level.
+Rank_22A = Rank_22[-17,]
+missing_geno <- is.na(Rank_22$Worst_Ovi6) # looking for missing data
+ # looking at the data to see how the rankings are. the rankings have some that have lower cases
+ # some data hove lower cases. this could be what is affecting the data
+
+
+Rank_22A$Best_Ovi6 = gsub(pattern = "a", replacement = "A", x = Rank_22A$Best_Ovi6) # replacing the lowercase A with uppercase A
+
+Rank_22A$Worst_Ovi6 = gsub(pattern = "b", replacement = "B", x = Rank_22A$Worst_Ovi6) # replace lowercase b with uppercase B
+
+
+
+R_6MAP<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_Ovi6", "Worst_Ovi6"))
+mod_6map <- PlackettLuce(R_6MAP, npseudo = 0.5) # run the model again
+Mod_6MAP_qv <- qvcalc(mod_6map) 
+
+
+
+Mod_6MAP_qv$qvframe <- Mod_6MAP_qv$qvframe[order(Mod_6MAP_qv$qvframe$estimate),]
+plot(Mod_6MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+
+
+```
+
+
+```{r for overall for 9MAP}
+
+R_9map<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_overimpr9MAP", "Worst_overimpr9MAP"))
+
+mod_R_9p <- PlackettLuce(R_9map, npseudo = 0.5)
+Mod_9MAP_qv <- qvcalc(mod_R_9p) # tie is preventing the work
+Mod_9MAP_qv$qvframe <- Mod_9MAP_qv$qvframe[order(Mod_9MAP_qv$qvframe$estimate),]
+plot(Mod_9MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+```
+
+
+```{r for overall for harvest}
+R_Hvst<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_HvOvi12", "Worst_HvOvi12"))
+
+mod_R_Hp <- PlackettLuce(R_Hvst, npseudo = 0.5)
+summary(mod_R_Hp)
+H_MAP_qv <- qvcalc(mod_R_Hp) # tie is preventing the work
+H_MAP_qv$qvframe <- H_MAP_qv$qvframe[order(H_MAP_qv$qvframe$estimate),]
+plot(H_MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+
+```
+
+
+```{r for overall for processing data}
+R_processing<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_GapOvi12", "Worst_GapOvi12"))
+
+mod_R_P <- PlackettLuce(R_processing, npseudo = 0.5)
+summary(mod_R_P)
+P_MAP_qv <- qvcalc(mod_R_P) # tie is preventing the work
+P_MAP_qv$qvframe <- P_MAP_qv$qvframe[order(P_MAP_qv$qvframe$estimate),]
+plot(P_MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+
+```
+
+```{r for overall for processing}
+R_garri_quality<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_GaqOvi12", "Worst_GaqOvi12"))
+
+mod_gari <- PlackettLuce(R_garri_quality, npseudo = 0.5)
+summary(mod_gari)
+gari_MAP_qv <- qvcalc(mod_gari) # tie is preventing the work
+gari_MAP_qv$qvframe <- gari_MAP_qv$qvframe[order(gari_MAP_qv$qvframe$estimate),]
+plot(gari_MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+
+```
+
+
+```{r for overall for processing}
+R_eba_quality<- rank_tricot(data = Rank_22A,
+                     items = c("VARIETY.A" ,"VARIETY.B",  "VARIETY.C"),
+                     input = c("Best_EbaOvi12", "Worst_EbaOvi12"))
+mod_Eba <- PlackettLuce(R_eba_quality, npseudo = 0.5)
+summary(mod_Eba)
+Eba_qv <- qvcalc(mod_Eba) # tie is preventing the work
+Eba_qv$qvframe <- Eba_qv$qvframe[order(Eba_qv$qvframe$estimate),]
+plot(Eba_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = NULL)
+
+```
+
+```{r}
+par(mfrow=c(2,3))
+plot(Mod_1MAP_qv, las = 2, ylab = "Worth estimates", cex.axis=0.5, main = "Log worth estimates forAgronomic traits at 1MAP")
+plot(Mod_6MAP_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main = "Log worth estimates forAgronomic traits at 6MAP")
+plot(Mod_9MAP_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main ="Log worth estimates forAgronomic traits at 9MAP")
+
+par(mfrow=c(2,2))
+plot(H_MAP_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main = "Log worth estimates for harvest data")
+plot(P_MAP_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main =  "Log worth estimates for Processing")
+plot(gari_MAP_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main = "Log worth estimates for garri quality")
+plot(Eba_qv, las = 2, ylab = "Log worth", cex.axis=0.5, main = "Log worth estimates for eba quality")
+```
+
